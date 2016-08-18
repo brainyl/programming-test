@@ -1,0 +1,83 @@
+<!doctype html>
+
+<html lang="en" ng-app="todoApp">
+<head>
+<!-- META -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <base href="/">
+
+  <title>Angular Programming Test</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <style>
+    html          { overflow-y:scroll; }
+    body          { padding-top:50px; }
+    #todo-list        { margin-bottom:30px; }
+    #todo-form        { margin-bottom:50px; }
+  </style>
+  <link rel="stylesheet" href="app.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+  <script src="https://cdn.jsdelivr.net/pouchdb/5.4.5/pouchdb.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/angular.pouchdb/4.3.0/angular-pouchdb.min.js"></script>
+  <script src="controllers/appController.js"></script> <!-- load the controller -->
+  <script src="services/todoService.js"></script> <!-- load the todo service -->
+  <script src="app.js"></script>
+  
+</head>
+
+<body ng-controller="appController">
+  <div class="container">
+
+    <!-- HEADER AND TODO COUNT -->
+    <div class="jumbotron text-center">
+      <h1>Simple Angular Todo App <span class="label label-info">{{ todos.length }}</span></h1>
+    </div>
+
+    <!-- TODO LIST -->
+    <div id="todo-list" class="row">
+      <div class="col-sm-4 col-sm-offset-4">
+
+        
+
+        <!-- LOOP OVER THE TODOS IN $scope.todos -->
+        <div class="checkbox" ng-repeat="todo in todos">
+          <label>
+            </span><input type="checkbox" ng-click="deleteTodo(todo.id)" required="required"/> {{ todo.text }} 
+          </label>
+          <i ng-hide="updatingTodo" ng-click="beginUpdate(todo)" class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        </div>
+
+        <p class="text-center" ng-show="loading">
+          <span class="fa fa-spinner fa-spin fa-3x"></span>
+        </p>
+
+      </div>
+    </div>
+
+    <!-- FORM TO CREATE TODOS -->
+    <div id="todo-form" class="row">
+      <div class="col-sm-8 col-sm-offset-2 text-center">
+        <form>
+          <div class="form-group">
+
+            <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+            <input type="text" class="form-control input-lg text-center" placeholder="Where will you love to visit in the next 10 years?" ng-model="formData.text">
+          </div>
+
+          <!-- createToDo() WILL CREATE NEW TODOS -->
+          <button type="submit" class="btn btn-info btn-lg" ng-click="createTodo()" ng-if="!updatingTodo">Add</button>
+           <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()" ng-if="updatingTodo">Update</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+ 
+</body>
+</html>

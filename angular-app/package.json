@@ -1,0 +1,31 @@
+{
+  "name": "angular-programming-test",
+  "version": "1.0.0",
+  "description": "An angularjs app to test the angular­pouchdb put function",
+  "main": "server.js",
+  "scripts": {
+    "test": "karma start",
+    "start": "node server.js"
+  },
+  "author": "Kelvin Igbineweka",
+  "license": "ISC",
+  "dependencies": {
+    "angular-pouchdb": "^4.3.0",
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "morgan": "^1.7.0",
+    "path": "^0.12.7",
+    "pouchdb": "^5.4.5",
+    "pouchdb-collate": "^1.2.0"
+  },
+  "devDependencies": {
+    "angular": "^1.5.6",
+    "angular-mocks": "^1.5.6",
+    "angular-ui-router": "^0.3.0",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-jasmine": "^1.0.2",
+    "karma-spec-reporter": "0.0.26"
+  }
+}
